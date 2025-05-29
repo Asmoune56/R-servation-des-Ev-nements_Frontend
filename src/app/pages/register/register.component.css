@@ -1,0 +1,28 @@
+.signup-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  }
+  
+  mat-card {
+    max-width: 400px;
+    width: 90%;
+    padding: 2em;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  h2 {
+    color: #573b8a;
+    margin-bottom: 1.5em;
+    font-weight: bold;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-top: 15px;
+  }
+  

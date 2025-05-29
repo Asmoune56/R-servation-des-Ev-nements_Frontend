@@ -1,0 +1,24 @@
+<div class="signup-wrapper">
+  <mat-card>
+    <h2>Sign Up</h2>
+
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput name="username" [(ngModel)]="user.username" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput name="email" type="email" [(ngModel)]="user.email" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput name="password" type="password" [(ngModel)]="user.password" required />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="full-width" type="submit">Register</button>
+    </form>
+  </mat-card>
+</div>

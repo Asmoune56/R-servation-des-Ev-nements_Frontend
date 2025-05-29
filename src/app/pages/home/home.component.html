@@ -1,0 +1,12 @@
+<div *ngFor="let event of events" class="event-card">
+  <mat-card>
+    <mat-card-title>{{ event.eventname }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ event.description }}</p>
+      <p><strong>Type :</strong> {{ event.type }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="reserver(event.idEvent)">Réserver</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

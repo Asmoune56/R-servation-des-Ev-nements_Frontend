@@ -1,0 +1,41 @@
+<div class="login-wrapper">
+  <mat-card>
+    <div class="header">
+      <h2>{{ isLoginMode ? 'Login' : 'Sign Up' }}</h2>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <!-- Sign Up Fields -->
+      <div *ngIf="!isLoginMode">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput name="username" [(ngModel)]="credentials.username" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Phone</mat-label>
+          <input matInput name="phone" [(ngModel)]="credentials.phone" type="tel" required />
+        </mat-form-field>
+      </div>
+
+      <!-- Common Fields -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput name="email" [(ngModel)]="credentials.email" type="email" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput name="password" [(ngModel)]="credentials.password" type="password" required />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="full-width" type="submit">
+        {{ isLoginMode ? 'Login' : 'Sign Up' }}
+      </button>
+
+      <a class="aLink" href="#" (click)="toggleMode()">
+        {{ isLoginMode ? "Don't have an account? Sign up" : "Already have an account? Login" }}
+      </a>
+    </form>
+  </mat-card>
+</div>
