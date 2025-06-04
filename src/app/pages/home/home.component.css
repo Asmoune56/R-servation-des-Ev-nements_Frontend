@@ -1,0 +1,33 @@
+.container {
+  padding: 0 15px;
+}
+
+.event-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(63, 81, 181, 0.4);
+}
+
+.event-type {
+  font-weight: 600;
+  color: #f44336; /* الأحمر لجذب الانتباه */
+  text-transform: uppercase;
+}
+
+.event-category {
+  background-color: #3f51b5;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.no-events {
+  font-size: 1.1rem;
+  margin-top: 40px;
+}

@@ -1,29 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css'],
+      encapsulation: ViewEncapsulation.None
+
+
 })
 export class LoginComponent {
-  isLoginMode = true;
+  loginForm: FormGroup;
+  errorMessage = '';
 
-  credentials = {
-    username: '',
-    email: '',
-    phone: '',
-    password: ''
-  };
-
-  toggleMode() {
-    this.isLoginMode = !this.isLoginMode;
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
   }
 
   onSubmit() {
-    if (this.isLoginMode) {
-      console.log('Logging in:', this.credentials);
-    } else {
-      console.log('Signing up:', this.credentials);
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.authService.login(email, password).subscribe({
+        next: (response) => {
+
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/']);
+        },
+        error: () => {
+          this.errorMessage = 'Email ou mot de passe incorrect';
+        },
+      });
     }
   }
 }

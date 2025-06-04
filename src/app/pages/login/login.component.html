@@ -1,41 +1,23 @@
-<div class="login-wrapper">
-  <mat-card>
-    <div class="header">
-      <h2>{{ isLoginMode ? 'Login' : 'Sign Up' }}</h2>
-    </div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-container">
+  <mat-card class="glass-card">
+    <mat-card-title class="title">Connexion</mat-card-title>
 
-    <form (ngSubmit)="onSubmit()" #form="ngForm">
-      <!-- Sign Up Fields -->
-      <div *ngIf="!isLoginMode">
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>Username</mat-label>
-          <input matInput name="username" [(ngModel)]="credentials.username" required />
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>Phone</mat-label>
-          <input matInput name="phone" [(ngModel)]="credentials.phone" type="tel" required />
-        </mat-form-field>
-      </div>
-
-      <!-- Common Fields -->
+    <mat-card-content>
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Email</mat-label>
-        <input matInput name="email" [(ngModel)]="credentials.email" type="email" required />
+        <input matInput formControlName="email" placeholder="Entrez votre email" />
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput name="password" [(ngModel)]="credentials.password" type="password" required />
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Entrez votre mot de passe" />
       </mat-form-field>
 
-      <button mat-raised-button color="primary" class="full-width" type="submit">
-        {{ isLoginMode ? 'Login' : 'Sign Up' }}
-      </button>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </mat-card-content>
 
-      <a class="aLink" href="#" (click)="toggleMode()">
-        {{ isLoginMode ? "Don't have an account? Sign up" : "Already have an account? Login" }}
-      </a>
-    </form>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" class="full-width-button">Se connecter</button>
+    </mat-card-actions>
   </mat-card>
-</div>
+</form>

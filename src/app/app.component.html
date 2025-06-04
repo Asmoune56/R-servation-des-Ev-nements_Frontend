@@ -1,19 +1,7 @@
-<!-- Navbar -->
-<mat-toolbar color="primary">
-  <span>Event Booking</span>
-  <span class="spacer"></span>
-  <a mat-button routerLink="/">Home</a>
-  <a mat-button routerLink="/login">Login</a>
-  <a mat-button routerLink="/register">Sign Up</a>
-</mat-toolbar>
+<app-navbar></app-navbar>
 
-<!-- Page Content -->
-<div class="container" style="margin: 20px;background-color: rgb(141, 193, 211);padding: 100px;">
+<div style="padding: 20px; padding-bottom: 70px;">
   <router-outlet></router-outlet>
 </div>
 
-
-<!-- Optional Footer -->
-<mat-toolbar color="accent" class="footer">
-  <span>All rights reserved &copy; 2025</span>
-</mat-toolbar>
+<app-footer></app-footer>

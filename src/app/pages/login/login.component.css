@@ -1,40 +1,90 @@
-.login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-  }
-  
-  mat-card {
-    max-width: 400px;
-    width: 90%;
-    padding: 2em;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  }
-  
-  .header h2 {
-    color: #573b8a;
-    font-weight: bold;
-    margin-bottom: 1.5em;
-  }
-  
-  .full-width {
-    width: 100%;
-    margin-top: 15px;
-  }
-  
-  .aLink {
-    display: block;
-    margin-top: 20px;
-    color: #573b8a;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .aLink:hover {
-    text-decoration: underline;
-  }
-  
+/* Container centers form vertically and horizontally with a subtle gradient background */
+.form-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 20px;
+}
+
+/* Glassmorphism card with blur and transparency */
+.glass-card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 24px;
+  color: white;
+}
+
+/* Title styling */
+.title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #e0e0e0;
+}
+
+/* Full width input fields */
+.full-width {
+  width: 100%;
+}
+
+/* Override Angular Material input colors for better contrast on glass background */
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.mat-form-field-label {
+  color: #d0d0d0 !important;
+}
+
+.mat-input-element {
+  color: white !important;
+}
+
+/* Placeholder text */
+.mat-input-element::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Error message */
+.error-message {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Button full width and styling */
+.full-width-button {
+  width: 100%;
+  padding: 14px 0;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.6);
+  transition: background 0.3s ease;
+}
+
+.full-width-button:hover {
+  background: linear-gradient(135deg, #5563d7, #5f3ea1);
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px;
+}
+
+::ng-deep .mat-input-element {
+  color: white !important;
+}
+

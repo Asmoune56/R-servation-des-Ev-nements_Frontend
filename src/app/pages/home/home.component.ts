@@ -1,39 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import { EventModel } from 'src/app/models/event';
 import { EventService } from 'src/app/services/event.service';
-import { ReservationService } from 'src/app/services/reservation.service';
+import { Event } from 'src/app/models/event';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  events: EventModel[] = [];
+  events: Event[] = [];
 
-  // تصحيح: يجب وضع الخصائص في constructor فقط
-  constructor(
-    private eventService: EventService,
-    private reservationService: ReservationService
-  ) {}
+  constructor(private eventService: EventService, private router: Router) {}
 
   ngOnInit(): void {
-    this.eventService.getAllEvents().subscribe((data) => {
-      this.events = data;
+    this.eventService.getAllEvents().subscribe({
+      next: (data) => {
+        this.events = data;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des événements :', err);
+      }
     });
   }
 
-  reserver(eventId: number): void {
-    const clientId = 1; // مؤقتاً فقط، استبدل بالعميل الحقيقي بعد الربط مع Login
+  viewDetails(event: Event): void {
+    // حاليا نفترض أن لدينا معرف eventname فقط، يمكنك تعديل حسب بياناتك
+    this.router.navigate(['/event-details', event.eventname]);
+  }
 
-    const reservation = {
-      idReservation: 0,
-      clientid: clientId,
-      eventId: eventId,
-    };
-
-    this.reservationService.createReservation(reservation).subscribe({
-      next: () => alert('Réservation effectuée avec succès!'),
-      error: () => alert('Erreur lors de la réservation.'),
-    });
+  bookEvent(event: Event): void {
+    // ننتقل إلى صفحة حجز الحدث
+    this.router.navigate(['/book-event', event.eventname]);
   }
 }

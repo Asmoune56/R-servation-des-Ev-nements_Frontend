@@ -1,8 +1,10 @@
-export interface EventModel {
-        idEvent: number;
-        eventname: string;
-        description: string;
-        type: string;
-      }
-      
-      
+export interface Event {
+  eventname: string;
+  description: string;
+  type: string;
+  lieu: string;
+  date: string;  
+  categorie: string;
+  adminId: number;
+}
+

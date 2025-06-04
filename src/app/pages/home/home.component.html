@@ -1,12 +1,25 @@
-<div *ngFor="let event of events" class="event-card">
-  <mat-card>
-    <mat-card-title>{{ event.eventname }}</mat-card-title>
-    <mat-card-content>
+<div class="container mt-5" style="max-width: 900px; margin: auto;">
+  <h2 class="mb-4" style="font-weight: 700; color: #3f51b5; text-align: center;">
+    Liste des événements
+  </h2>
+
+  <div *ngIf="events.length === 0" class="no-events" style="text-align: center; font-style: italic; color: #777;">
+    Aucun événement à afficher.
+  </div>
+
+  <mat-card *ngFor="let event of events" class="event-card mat-elevation-z6" style="margin-bottom: 20px; border-radius: 12px;">
+    <mat-card-header>
+      <mat-card-title style="font-weight: 600; font-size: 1.4rem; color: #2c387e;">
+        {{ event.eventname }}
+      </mat-card-title>
+      <mat-card-subtitle style="color: #555;">
+        {{ event.date | date:'fullDate' }} &nbsp;|&nbsp; {{ event.lieu }} &nbsp;|&nbsp; <span class="event-type">{{ event.type }}</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content style="margin-top: 10px; font-size: 1rem; color: #424242;">
       <p>{{ event.description }}</p>
-      <p><strong>Type :</strong> {{ event.type }}</p>
+      <p><strong>Catégorie :</strong> <span class="event-category">{{ event.categorie }}</span></p>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="reserver(event.idEvent)">Réserver</button>
-    </mat-card-actions>
   </mat-card>
 </div>
